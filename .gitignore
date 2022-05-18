@@ -13,4 +13,12 @@
 
 # Mac shit
 *.DS_Store
+ 
+# node shit 
+/node_modules
 node_modules
+
+# dotenv environment variables file
+.env
+.env.test
+/*.env
