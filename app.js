@@ -10,8 +10,8 @@ const express = require('express'),
     TodoTask = require("./models/TodoTask"),
     dotenv = require('dotenv');
 dotenv.config();
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
-    console.log("Connected to db!");
+mongoose.connect("mongodb+srv://test:12345@notedo.0fxvt.mongodb.net/?retryWrites=true", { useNewUrlParser: true }, () => {
+  console.log("Connected to db!");
 
 });
 app.use(require("express-session")({
