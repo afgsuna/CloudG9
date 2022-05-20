@@ -10,7 +10,6 @@ const express = require('express'),
     TodoTask = require("./models/TodoTask"),
     dotenv = require('dotenv');
 dotenv.config();
-let tempU;
 mongoose.connect("mongodb+srv://test:12345@notedo.0fxvt.mongodb.net/?retryWrites=true", { useNewUrlParser: true }, () => {
   console.log("Connected to db!");
 
@@ -75,14 +74,13 @@ app.get("/logout", (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
-        tempU=req.user.id;
         return next();
     }
     res.redirect("/login");
 }
 // GET METHOD todo
 app.get("/userprofile", isLoggedIn, (req, res) => {
-    TodoTask.find({"owner": tempU}, (err, tasks) => {
+    TodoTask.find({}, (err, tasks) => {
        
         res.render("userprofile.ejs", { todoTasks: tasks });
     });
@@ -90,7 +88,6 @@ app.get("/userprofile", isLoggedIn, (req, res) => {
 //Post method todo
 app.post('/userprofile', async (req, res) => {
     const todoTask = new TodoTask({
-        owner: tempU,
         content: req.body.content
     });
     try {
@@ -102,7 +99,7 @@ app.post('/userprofile', async (req, res) => {
 });
 //UPDATE todo
 app.route("/edit/:id").get((req, res) => {
-    const id = req.params.id; TodoTask.find({"owner": tempU}, (err, tasks) => {
+    const id = req.params.id; TodoTask.find({}, (err, tasks) => {
         res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
     });
 }).post((req, res) => {
