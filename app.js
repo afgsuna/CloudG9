@@ -1,7 +1,7 @@
 const express = require('express'),
     app = express(),
     mongoose = require("mongoose"),
-
+   
     passport = require("passport"),
     bodyParser = require("body-parser"),
     LocalStrategy = require("passport-local"),
@@ -10,6 +10,7 @@ const express = require('express'),
     TodoTask = require("./models/TodoTask"),
     dotenv = require('dotenv');
 dotenv.config();
+let tempU;
 mongoose.connect("mongodb+srv://test:12345@notedo.0fxvt.mongodb.net/?retryWrites=true", { useNewUrlParser: true }, () => {
   console.log("Connected to db!");
 
@@ -37,16 +38,7 @@ app.get("/", (req, res) => {
     res.render("home");
 })
 
-app.get("/userprofile", isLoggedIn, (req, res) => {
-    TodoTask.find({}, (err, tasks) => {
-        //fix till imr gör användare och filterara genom det .
-        //db.movies.find( { "directors": "Christopher Nolan" } );
-        res.render("userprofile.ejs", { todoTasks: tasks });
-        console.log(tasks);
 
-        // res.render("userprofile");
-    });
-});
 //Auth Routes
 app.get("/login", (req, res) => {
     res.render("login");
@@ -83,22 +75,22 @@ app.get("/logout", (req, res) => {
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
+        tempU=req.user.id;
         return next();
     }
     res.redirect("/login");
 }
 // GET METHOD todo
-app.get('/userprofile', (req, res) => {
-    TodoTask.find({}, (err, tasks) => {
-        //fix till imr gör användare och filterara genom det .
-        //db.movies.find( { "directors": "Christopher Nolan" } );
-        res.render("userprofile.ejs", { todotasks: tasks });
-        console.log(tasks);
+app.get("/userprofile", isLoggedIn, (req, res) => {
+    TodoTask.find({"owner": tempU}, (err, tasks) => {
+       
+        res.render("userprofile.ejs", { todoTasks: tasks });
     });
 });
 //Post method todo
 app.post('/userprofile', async (req, res) => {
     const todoTask = new TodoTask({
+        owner: tempU,
         content: req.body.content
     });
     try {
@@ -106,11 +98,11 @@ app.post('/userprofile', async (req, res) => {
         res.redirect("/userprofile");
     } catch (err) {
         res.redirect("/userprofile");
-    } console.log(req.body);
+    }
 });
 //UPDATE todo
 app.route("/edit/:id").get((req, res) => {
-    const id = req.params.id; TodoTask.find({}, (err, tasks) => {
+    const id = req.params.id; TodoTask.find({"owner": tempU}, (err, tasks) => {
         res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
     });
 }).post((req, res) => {

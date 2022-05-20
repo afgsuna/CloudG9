@@ -19,7 +19,7 @@
                         <li class="todo-list-item">
                             <form action="/edit/<%= details._id %>" method="POST"><input type="text"
                                     value="<%= details.content %>" name="content"><button
-                                    type="submit">Confirm</button><a href="/" class="cancel">Cancel</a></form>
+                                    type="submit">Confirm</button><a href="/userprofile" class="cancel">Cancel</a></form>
                         </li>
                         <% } else { %>
                             <li class="todo-list-item">
