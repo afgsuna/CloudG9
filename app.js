@@ -80,14 +80,15 @@ function isLoggedIn(req, res, next) {
 }
 // GET METHOD todo
 app.get("/userprofile", isLoggedIn, (req, res) => {
-    TodoTask.find({}, (err, tasks) => {
+    TodoTask.find({"owner": req.user.id }, (err, tasks) => {
        
         res.render("userprofile.ejs", { todoTasks: tasks });
     });
 });
 //Post method todo
-app.post('/userprofile', async (req, res) => {
+app.post('/userprofile',isLoggedIn, async (req, res) => {
     const todoTask = new TodoTask({
+        owner: req.user.id,
         content: req.body.content
     });
     try {
@@ -98,8 +99,8 @@ app.post('/userprofile', async (req, res) => {
     }
 });
 //UPDATE todo
-app.route("/edit/:id").get((req, res) => {
-    const id = req.params.id; TodoTask.find({}, (err, tasks) => {
+app.route("/edit/:id").get( isLoggedIn,(req, res) => {
+    const id = req.params.id; TodoTask.find({"owner": req.user.id}, (err, tasks) => {
         res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
     });
 }).post((req, res) => {
@@ -108,7 +109,7 @@ app.route("/edit/:id").get((req, res) => {
     }, err => { if (err) return res.send(500, err); res.redirect("/userprofile"); });
 });
 //DELETE method todo
-app.route("/remove/:id").get((req, res) => {
+app.route("/remove/:id").get( isLoggedIn,(req, res) => {
     const id = req.params.id; TodoTask.findByIdAndRemove(id, err => {
         if (err) return res.send(500, err);
         res.redirect("/userprofile");
