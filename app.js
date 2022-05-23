@@ -34,7 +34,7 @@ app.use(passport.session());
 //=======================
 
 app.get("/", (req, res) => {
-    res.render("home");
+    res.render("login");
 })
 
 
@@ -58,6 +58,7 @@ app.post("/register", (req, res) => {
 
     User.register(new User({ username: req.body.username, phone: req.body.phone, telephone: req.body.telephone }), req.body.password, function (err, user) {
         if (err) {
+            
             console.log(err);
             res.render("register");
         }

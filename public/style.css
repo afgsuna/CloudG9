@@ -177,7 +177,7 @@ a:hover {
 .loginpage{
   color: white;
     position: absolute;
-    top: 20%;
+    top: 50%;
     left: 50%;
     padding: 20px;
     width: 600px;
@@ -190,4 +190,33 @@ a:hover {
     font-family: 'Candal', sans-serif
 
 
+}
+.registerpage{
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  width: 600px;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: auto;
+  font-family: 'Candal', sans-serif
+}
+.item{
+  order: 1;
+}
+
+.item2{
+  order: 2;
+}
+.item3{
+  order: 3;
+}
+.item4{
+  order: 4;
 }
