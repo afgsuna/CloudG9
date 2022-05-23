@@ -21,11 +21,11 @@
     </header>
     
     <div class="todo-container">
-        <h2>To-Do List</h2>
+        <h2>Do Notes</h2>
         <div class="todo">
             <form action="" method="POST" class="todo-header">
                 <input type="text" name="content">
-                <button type="submit"><span class="fas fa-plus"></span> </button>
+                <button type="submit"><span class="fa fa-plus-square"></span> </button>
             </form>
             <ul class="todo-list">
                 <% todoTasks.forEach(details=>{ %>
@@ -34,7 +34,7 @@
                             <%= details.content %>
                         </div>
                         <a href="/edit/<%= details._id %>" class="edit">
-                            <span class="fas fa-edit"></span>
+                            <span class="fa fa-cog"></span>
                         </a>
                         <a href="/remove/<%= details._id %>" class="remove">
                             <span class="fas fa-times"></span>

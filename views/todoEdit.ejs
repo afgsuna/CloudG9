@@ -1,12 +1,7 @@
 <html>
 
 <head>
-    <h1>
-        username: <%=username %>
-    </h1>
-    <ul>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
+    
     <title>Todo App</title>
     <link rel="stylesheet" href="/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
@@ -15,11 +10,19 @@
 </head>
 
 <body>
+    <header>
+      
+        <nav class="primary-navigation" data-visible="false" id="left">
+    
+          <a class="active" </a>User: <%=username %></a>
+          <a href="/logout">Logout</a>
+        </nav>
+  </header>
     <div class="todo-container">
-        <h2>To-Do List</h2>
+        <h2>Do Notes</h2>
         <div class="todo">
             <form action="" method="POST" class="todo-header"><input type="text" name="content"><button
-                    type="submit"><span class="fas fa-plus"></span></button></form>
+                    type="submit"><span class="fa fa-plus-square"></span></button></form>
             <ul class="todo-list">
                 <% todoTasks.forEach(details=> { %><% if (details._id==idTask) { %>
                         <li class="todo-list-item">
