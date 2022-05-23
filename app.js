@@ -81,8 +81,10 @@ function isLoggedIn(req, res, next) {
 // GET METHOD todo
 app.get("/userprofile", isLoggedIn, (req, res) => {
     TodoTask.find({"owner": req.user.id }, (err, tasks) => {
-       
-        res.render("userprofile.ejs", { todoTasks: tasks });
+        res.render("userprofile.ejs", {
+            username: req.user.username,
+             todoTasks: tasks
+            });
     });
 });
 //Post method todo
@@ -101,7 +103,7 @@ app.post('/userprofile',isLoggedIn, async (req, res) => {
 //UPDATE todo
 app.route("/edit/:id").get( isLoggedIn,(req, res) => {
     const id = req.params.id; TodoTask.find({"owner": req.user.id}, (err, tasks) => {
-        res.render("todoEdit.ejs", { todoTasks: tasks, idTask: id });
+        res.render("todoEdit.ejs", { username: req.user.username,todoTasks: tasks, idTask: id });
     });
 }).post((req, res) => {
     const id = req.params.id; TodoTask.findByIdAndUpdate(id, {
