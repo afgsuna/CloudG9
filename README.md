@@ -27,7 +27,7 @@ other peoples notes. This is the security feature of the app.
     <tr>
       <ul>
       <td>Express.js</td>
-      <li>makes it much easier to handle http requests</li>
+      <td>makes it much easier to handle http requests</td>
         </ul>
     </tr>
     <tr>
