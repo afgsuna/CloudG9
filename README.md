@@ -47,7 +47,7 @@ other peoples notes. This is the security feature of the app.
     </tr>
     <tr>
       <td>ejs</td>
-      <td>Reduces redundancy of template </td>
+      <td>Reduces redundancy by using templates </td>
     </tr>
     <tr>
       <td>Passport</td>
