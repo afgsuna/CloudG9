@@ -21,7 +21,6 @@ other peoples notes. This is the security feature of the app.
             <ul>
                 <li>popular and well-documented</li>
                 <li>uses JS as main application</li>
-                <li>robust framework</li>
             </ul>
         </td>
     </tr>
@@ -33,9 +32,7 @@ other peoples notes. This is the security feature of the app.
       <td>MongoDB cloud</td>
       <td>
         <ul>
-          <li>noSQL DBs like MongoDB are easier to scale</li>
           <li>No relationships needed for makingin the database </li>
-          <li>well-documented</li>
           <li>free cloud hosting of the database</li>
         </ul>
       </td>
@@ -50,7 +47,7 @@ other peoples notes. This is the security feature of the app.
     </tr>
     <tr>
       <td>ejs</td>
-      <td>saves a lot of lines of code, especially given that I need to rewrite the same code so many times when creating new to-do lists</td>
+      <td>Reduces redundancy of template </td>
     </tr>
     <tr>
       <td>Passport</td>
