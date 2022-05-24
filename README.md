@@ -25,8 +25,10 @@ other peoples notes. This is the security feature of the app.
         </td>
     </tr>
     <tr>
+      <ul>
       <td>Express.js</td>
       <td>makes it much easier to handle http requests</td>
+        </ul>
     </tr>
     <tr>
       <td>MongoDB cloud</td>
@@ -38,20 +40,28 @@ other peoples notes. This is the security feature of the app.
       </td>
     </tr>
     <tr>
+      <ul>
       <td>Heroku</td>
       <td>Host the backend in Heroku</td>
+      </ul>
     </tr>
     <tr>
+      <ul>
       <td>dotenv</td>
       <td>login security</td>
+         </ul>
     </tr>
     <tr>
+      <ul>
       <td>ejs</td>
       <td>Reduces redundancy by using templates </td>
+       </ul>
     </tr>
     <tr>
+      <ul>
       <td>Passport</td>
       <td>Use this for the authentication of the application</td>
+        </ul>
     </tr>
   </tbody>
 </table>
