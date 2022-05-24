@@ -32,7 +32,7 @@ other peoples notes. This is the security feature of the app.
       <td>MongoDB cloud</td>
       <td>
         <ul>
-          <li>No relationships needed for makingin the database </li>
+          <li>No relationships needed when designing the database </li>
           <li>free cloud hosting of the database</li>
         </ul>
       </td>
